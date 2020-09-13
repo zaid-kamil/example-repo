@@ -38,3 +38,12 @@ if submit and location:
         st.success("data added to database")
     except Exception as e:
         st.error(f"some error occurred : {e}")
+
+
+if st.checkbox("view data"):
+    results = sess.query(UserInput).all()
+    for item in results:
+        st.subheader(item.location)
+        st.text(item.house_area)
+        st.text(item.age)
+        st.text(item.no_of_rooms)
